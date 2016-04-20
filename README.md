@@ -15,6 +15,8 @@
 * Make sure your local installation is running PHP 5.4 or above.
 * Activate the theme.
 
+If having issues with 404 on scripts and styles flush the rewrite rules.
+
 ## So?
 The relevant part of the theme is the code used to render the content loop initial state using [handlebars.php](https://github.com/XaminProject/handlebars.php "GitHub - XaminProject/handlebars.php: Handlebars processor for php") and the following refresh using [Backbone](http://backbonejs.org/ "Backbone.js") and [Handlebars.js](http://handlebarsjs.com/ "Handlebars.js: Minimal Templating on Steroids").
 The template re-use possibility comes from a "RESTified" `WP_Query` done tapping into the [REST Query plugin](https://github.com/lucatume/rest-query) and the [WP REST API plugin](https://wordpress.org/plugins/json-rest-api/).
