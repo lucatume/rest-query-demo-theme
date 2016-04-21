@@ -22,4 +22,3 @@ The relevant part of the theme is the code used to render the content loop initi
 The template re-use possibility comes from a "RESTified" `WP_Query` done tapping into the [REST Query plugin](https://github.com/lucatume/rest-query) and the [WP REST API plugin](https://wordpress.org/plugins/json-rest-api/).
 The theme is meant to be a proof of concept and not a "state of the art" approach to WordPress themes; I've gone for code simplicity over a more OOP approach for the sake of clarity.  
 Deactivate JavaScript support on the page to see the theme gracefully degrading to Web 1.0 behaviour and still rock on the REST API.
-
