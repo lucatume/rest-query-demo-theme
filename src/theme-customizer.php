@@ -11,7 +11,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $customizeMana
 	//	$customizeManager->remove_panel( 'nav_menus' );
 
 	// let's add the template setting
-	$customizeManager->add_setting( 'rqd_templateEngine', [
+	$customizeManager->add_setting( 'templateEngine', [
 		'default'   => 'handlebars',
 		'type'      => 'theme_mod',
 		'transport' => 'refresh',
@@ -25,7 +25,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $customizeMana
 	$customizeManager->add_control( 'rqd_templateEngineSelect', [
 		'label'    => 'Select the template engine to use',
 		'section'  => 'rqd_templateEngineSection',
-		'settings' => 'rqd_templateEngine',
+		'settings' => 'templateEngine',
 		'type'     => 'select',
 		'choices'  => [
 			'handlebars' => 'Handlebars',

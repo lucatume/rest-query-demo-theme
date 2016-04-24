@@ -1,16 +1,21 @@
 {
-    "name": "lucatume/rest-query-demo-theme",
-    "description": "REST Query plugin demo theme",
-    "type": "wordpress-theme",
-    "require": {
-        "xamin/handlebars.php": "^0.10.3"
-    },
-    "license": "GPL v2.0",
-    "authors": [
-        {
-            "name": "Luca Tumedei",
-            "email": "luca@theaveragedev.com"
-        }
-    ],
-    "minimum-stability": "stable"
+  "name": "lucatume/rest-query-demo-theme",
+  "description": "REST Query plugin demo theme",
+  "type": "wordpress-theme",
+  "require": {
+    "xamin/handlebars.php": "^0.10.3"
+  },
+  "license": "GPL v2.0",
+  "authors": [
+    {
+      "name": "Luca Tumedei",
+      "email": "luca@theaveragedev.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "rqd\\": "src/"
+    }
+  }
 }
