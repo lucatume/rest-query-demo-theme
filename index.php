@@ -1,5 +1,7 @@
 <?php
 use rqd\TemplateEngineInterface;
+
+$templateEngineName = get_theme_mod( 'templateEngine', 'handlebars' );
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ use rqd\TemplateEngineInterface;
 
 <header class='container row' id='header'>
 	<h1 class="small-12 columns text-center">The Loop</h1>
-	<p class="small-12 columns text-center">Rendering with <?php echo \rqd\templateEngineInfo( get_theme_mod( 'templateEngine' ) ); ?></p>
+	<p class="small-12 columns text-center">Rendering with <?php echo \rqd\templateEngineInfo( $templateEngineName ); ?></p>
 </header>
 
 <nav class='container row' id='nav'>
@@ -79,19 +81,12 @@ use rqd\TemplateEngineInterface;
 <script src="js/underscores.js"></script>
 <script src="js/backbone.js"></script>
 <script type="text/javascript">
-	// let's alias jQuery to '$' for Foundation to use
-	window.$ = $ || jQuery;
-
 	// and localize the REST API url and nonce
-	window.rest = {
+	window.restData = {
 		url: '<?php echo rest_url( 'wp/v2/posts' ) ?>',
 		nonce: '<?php echo wp_create_nonce( 'wp_rest' ) ?>'
 	};
 </script>
-<script src="js/vendor/what-input.js"></script>
-<script src="js/vendor/foundation.js"></script>
-<script src="js/vendor/handlebars.min.js"></script>
-<script src="js/vendor/spin.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/dist/rqd-<?php echo $templateEngineName; ?>-bundle.js"></script>
 </body>
 </html>
