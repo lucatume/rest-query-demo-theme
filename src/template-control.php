@@ -38,6 +38,12 @@ class TemplateControl {
 		return new HandlebarsTemplateEngine( $handlebars );
 	}
 
+	protected function getMustacheInstance() {
+		$mustache = new \Mustache_Engine( [ 'loader' => new  \Mustache_Loader_FilesystemLoader( $this->getMustacheTemplateFolder() ) ] );
+
+		return new MustacheTemplateEngine( $mustache );
+	}
+
 	/**
 	 * @param string $templateEngine
 	 *
@@ -46,11 +52,16 @@ class TemplateControl {
 	private function getTemplateEngineInstanceFor( $templateEngine ) {
 		$map = [
 			'handlebars' => 'getHandlebarsInstance',
+			'mustache'   => 'getMustacheInstance',
 		];
 
 		$templateEngine = isset( $map[ $templateEngine ] ) ? $templateEngine : 'handlebars';
 
 		return $this->{$map[ $templateEngine ]}();
+	}
+
+	protected function getMustacheTemplateFolder() {
+		return $templatesFolder = dirname( dirname( __FILE__ ) ) . '/templates/mustache/';
 	}
 }
 
