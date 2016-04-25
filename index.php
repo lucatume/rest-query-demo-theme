@@ -1,5 +1,5 @@
 <?php
-global $wp_query;
+use rqd\TemplateEngineInterface;
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ global $wp_query;
 			}, $wp_query->posts );
 
 			// the `rqdTemplate::templateInclude` method set up the `$templateEngine` var so that we can use it here
-			/** @var rqd_TemplateEngineInterface $templateEngine */
+			/** @var TemplateEngineInterface $templateEngine */
 			$templateContents = $templateEngine->getTemplateContents( 'content' );
 
 			// print the template to the page for the JS version of the template engine to use

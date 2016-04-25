@@ -5,10 +5,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $customizeMana
 	$customizeManager->remove_section( 'title_tagline' );
 	$customizeManager->remove_section( 'static_front_page' );
 
+	// $customizeManager->remove_panel( 'nav_menus' );
 	// we cannot do this!
 	// The right way to do it is to filter components on `customize_loaded_components` in a plugin.
 	// Since we are in a theme we have to use JS to do it: see the function below.
-	//	$customizeManager->remove_panel( 'nav_menus' );
 
 	// let's add the template setting
 	$customizeManager->add_setting( 'templateEngine', [
