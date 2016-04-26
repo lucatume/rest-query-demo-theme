@@ -4,6 +4,7 @@ namespace rqd\Template;
 
 use Handlebars\Handlebars;
 use Handlebars\Loader\FilesystemLoader;
+use Jade\Jade;
 
 class Control {
 
@@ -30,6 +31,7 @@ class Control {
 			'mustache'   => 'getMustacheInstance',
 			'smarty'     => 'getSmartyInstance',
 			'twig'       => 'getTwigInstance',
+			'jade'       => 'getJadeInstance',
 		];
 
 		$templateEngine = isset( $map[ $templateEngine ] ) ? $templateEngine : 'handlebars';
@@ -95,6 +97,19 @@ class Control {
 
 	protected function getTwigTemplateFolder() {
 		return $this->root . '/templates/twig/';
+	}
+
+	protected function getJadeInstance() {
+		$jade = new Jade( [
+			'prettyprint' => true,
+			'extensions'  => '.jade',
+		] );
+
+		return new JadeEngine( $jade, $this->getJadeTemplateFolder() );
+	}
+
+	protected function getJadeTemplateFolder() {
+		return $this->root . '/templates/jade/';
 	}
 }
 

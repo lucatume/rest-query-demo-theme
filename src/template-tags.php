@@ -26,6 +26,10 @@ function templateEngineInfo( $template, $version = 'php' ) {
 			'php' => '<a href="http://twig.sensiolabs.org" target="_blank">Twig for PHP</a>',
 			'js'  => '<a href="https://github.com/twigjs/twig.js" target="_blank">twig.js</a>',
 		],
+		'jade'       => [
+			'php' => '<a href="https://github.com/kylekatarnls/jade-php" target="_blank">jade-php</a>',
+			'js'  => '<a href="https://github.com/pugjs/pug" target="_blank">pugjs</a>',
+		],
 	];
 
 	return ! empty( $map[ $template ][ $version ] ) ? $map[ $template ][ $version ] : $map['handlebars']['php'];

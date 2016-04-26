@@ -32,6 +32,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $customizeMana
 			'mustache'   => 'Mustache',
 			'smarty'     => 'Smarty',
 			'twig'       => 'Twig',
+			'jade'       => 'Jade (Pug)',
 		],
 	] );
 } );

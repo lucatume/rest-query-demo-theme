@@ -6,6 +6,7 @@ module.exports = {
 		'rqd-mustache-bundle': './js/mustache-app.js',
 		'rqd-smarty-bundle': './js/jsmart-app.js',
 		'rqd-twig-bundle': './js/twig-app.js',
+		'rqd-jade-bundle': './js/jade-app.js',
 	},
 	output: {filename: './js/dist/[name].js'},
 	module: {

@@ -1,0 +1,13 @@
+if posts
+	each post in posts
+		article.row
+			header.medium-4.columns.text-right
+				h4!= post.title.rendered
+			.medium-8.columns
+				.callout!= post.content.rendered
+else
+	article.row
+		header.columns.text-center
+			.callout
+				h4 Nothing found.
+				p You had one job...
