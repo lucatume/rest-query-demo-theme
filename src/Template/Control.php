@@ -19,6 +19,24 @@ class Control {
 		$this->templateEngine = $this->getTemplateEngineInstanceFor( $templateEngine );
 	}
 
+	/**
+	 * @param string $templateEngine
+	 *
+	 * @return TemplateEngineInterface
+	 */
+	private function getTemplateEngineInstanceFor( $templateEngine ) {
+		$map = [
+			'handlebars' => 'getHandlebarsInstance',
+			'mustache'   => 'getMustacheInstance',
+			'smarty'     => 'getSmartyInstance',
+			'twig'       => 'getTwigInstance',
+		];
+
+		$templateEngine = isset( $map[ $templateEngine ] ) ? $templateEngine : 'handlebars';
+
+		return $this->{$map[ $templateEngine ]}();
+	}
+
 	public function templateInclude( $template ) {
 		// allow the template to use it in its scope
 		$templateEngine = $this->templateEngine;
@@ -26,15 +44,8 @@ class Control {
 		// include the template file
 		include $template;
 
-		// prevent WordPress from loading the template again 
+		// prevent WordPress from loading the template again
 		return false;
-	}
-
-	/**
-	 * @return string
-	 */
-	protected function getHandlebarsTemplateFolder() {
-		return $templatesFolder = $this->root . '/templates/handlebars/';
 	}
 
 	/**
@@ -46,10 +57,21 @@ class Control {
 		return new HandlebarsEngine( $handlebars );
 	}
 
+	/**
+	 * @return string
+	 */
+	protected function getHandlebarsTemplateFolder() {
+		return $templatesFolder = $this->root . '/templates/handlebars/';
+	}
+
 	protected function getMustacheInstance() {
 		$mustache = new \Mustache_Engine( [ 'loader' => new  \Mustache_Loader_FilesystemLoader( $this->getMustacheTemplateFolder() ) ] );
 
 		return new MustacheEngine( $mustache );
+	}
+
+	protected function getMustacheTemplateFolder() {
+		return $this->root . '/templates/mustache/';
 	}
 
 	protected function getSmartyInstance() {
@@ -59,29 +81,20 @@ class Control {
 		return new SmartyEngine( $smarty );
 	}
 
-	/**
-	 * @param string $templateEngine
-	 *
-	 * @return TemplateEngineInterface
-	 */
-	private function getTemplateEngineInstanceFor( $templateEngine ) {
-		$map = [
-			'handlebars' => 'getHandlebarsInstance',
-			'mustache'   => 'getMustacheInstance',
-			'smarty'     => 'getSmartyInstance',
-		];
-
-		$templateEngine = isset( $map[ $templateEngine ] ) ? $templateEngine : 'handlebars';
-
-		return $this->{$map[ $templateEngine ]}();
-	}
-
-	protected function getMustacheTemplateFolder() {
-		return $templatesFolder = $this->root . '/templates/mustache/';
-	}
-
 	protected function getSmartyTemplateFolder() {
-		return $templatesFolder = $this->root . '/templates/smarty/';
+		return $this->root . '/templates/smarty/';
+	}
+
+	protected function getTwigInstance() {
+		$loader = new \Twig_Loader_Filesystem( $this->getTwigTemplateFolder() );
+		$twig   = new \Twig_Environment( $loader );
+		$twig->addExtension( new \Twig_Extension_Escaper( false ) );
+
+		return new TwigEngine( $twig );
+	}
+
+	protected function getTwigTemplateFolder() {
+		return $this->root . '/templates/twig/';
 	}
 }
 
