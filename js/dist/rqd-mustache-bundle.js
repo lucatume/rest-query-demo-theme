@@ -44,12 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// from WordPress
 	var $ = __webpack_require__(1),
 	    restData,
 	    Backbone = __webpack_require__(2),
-	    Mustache,
-	    templateContents;
+	    Mustache;
 
 	__webpack_require__(3);
 	__webpack_require__(4);
@@ -90,10 +88,10 @@
 		};
 
 		// parse the content template for performance reasons
-		templateContents = $('#tpl-content').html();
+		var templateContents = $('#tpl-content').html();
 		Mustache.parse(templateContents);
 
-		// spinn up the spinner
+		// spin up the spinner
 		var spinner = new Spinner().spin();
 		var contentArea = $('#content-area');
 

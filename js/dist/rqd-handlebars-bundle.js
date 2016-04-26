@@ -44,7 +44,6 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// from WordPress
 	var $ = __webpack_require__(1),
 	    restData,
 	    Backbone = __webpack_require__(2),
@@ -89,16 +88,16 @@
 		};
 
 		// compile the content template
-		contentTemplate = Handlebars.compile($('#tpl-content').html());
+		var compiledTemplate = Handlebars.compile($('#tpl-content').html());
 
-		// spinn up the spinner
+		// spin up the spinner
 		var spinner = new Spinner().spin();
 		var contentArea = $('#content-area');
 
 		// let's route
 		var rqdRouter = Backbone.Router.extend({
 			restEndpoint: restEndpoint,
-			template: contentTemplate,
+			template: compiledTemplate,
 			routes: {
 				'': 'index',
 				'?s=:searchString': 'index'

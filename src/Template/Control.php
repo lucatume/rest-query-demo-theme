@@ -20,11 +20,12 @@ class Control {
 	}
 
 	public function templateInclude( $template ) {
-		// to allow the template to use it in its scope
+		// allow the template to use it in its scope
 		$templateEngine = $this->templateEngine;
 
+		// include the template file
 		include $template;
-		
+
 		// prevent WordPress from loading the template again 
 		return false;
 	}

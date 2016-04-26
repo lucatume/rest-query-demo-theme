@@ -1,5 +1,4 @@
-// from WordPress
-var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), jSmart, templateContents;
+var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), jSmart;
 
 require( 'what-input' )
 require( 'foundation' );
@@ -40,17 +39,16 @@ $( document ).ready( function () {
 	}
 
 	// parse the content template for performance reasons
-	templateContents = $( '#tpl-content' ).html()
-	template = new jSmart( templateContents );
+	var compiledTemplate = new jSmart( $( '#tpl-content' ).html() );
 
-	// spinn up the spinner
+	// spin up the spinner
 	var spinner = new Spinner().spin()
 	var contentArea = $( '#content-area' );
 
 	// let's route
 	var rqdRouter = Backbone.Router.extend( {
 		restEndpoint: restEndpoint,
-		template: template,
+		template: compiledTemplate,
 		routes: {
 			'': 'index',
 			'?s=:searchString': 'index',

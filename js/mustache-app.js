@@ -1,5 +1,4 @@
-// from WordPress
-var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), Mustache, templateContents;
+var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), Mustache;
 
 require( 'what-input' )
 require( 'foundation' );
@@ -40,10 +39,10 @@ $( document ).ready( function () {
 	}
 
 	// parse the content template for performance reasons
-	templateContents = $( '#tpl-content' ).html()
+	var templateContents = $( '#tpl-content' ).html()
 	Mustache.parse( templateContents );
 
-	// spinn up the spinner
+	// spin up the spinner
 	var spinner = new Spinner().spin()
 	var contentArea = $( '#content-area' );
 
