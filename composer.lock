@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "783fda9dbc51671e207f8d88683a4b70",
-    "content-hash": "b298f9ed8f9a4cb816b285983d97365e",
+    "hash": "ff0b5abfee6dfa6dadc5395684d57750",
+    "content-hash": "4b75c9d8b8080807d53253a5b5ef9edf",
     "packages": [
         {
             "name": "mustache/mustache",
@@ -107,6 +107,43 @@
                 "templating"
             ],
             "time": "2015-12-21 01:57:06"
+        },
+        {
+            "name": "underscore/underscore.php",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ActiveObject/Underscore.php.git",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ActiveObject/Underscore.php/zipball/1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "reference": "1801b881c2596e9d95ca6628fb62db882f16aa7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "underscore.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Underscore.php is a PHP port of Underscore.js.",
+            "homepage": "http://brianhaveri.github.com/Underscore.php",
+            "keywords": [
+                "functional",
+                "underscore",
+                "util"
+            ],
+            "abandoned": "anahkiasen/underscore-php",
+            "time": "2012-05-08 22:12:27"
         },
         {
             "name": "xamin/handlebars.php",
