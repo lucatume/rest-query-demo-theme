@@ -1,0 +1,22 @@
+{{#posts}}
+    <article class="row">
+        <header class="medium-4 columns text-right">
+            <h4>{{{title.rendered}}}</h4>
+        </header>
+        <div class="medium-8 columns">
+            <div class="callout">
+                {{{content.rendered}}}
+            </div>
+        </div>
+    </article>
+{{/posts}}
+{{^posts}}
+    <article class="row">
+        <header class="columns text-center">
+            <div class="callout">
+                <h4>Nothing found.</h4>
+                <p>You had one job...</p>
+            </div>
+        </header>
+    </article>
+{{/posts}}

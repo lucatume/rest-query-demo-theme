@@ -1,19 +1,17 @@
 <?php
 
-namespace rdq;
+namespace rqd\Template;
 
 
-use rqd\TemplateEngineInterface;
-
-class MustacheTemplateEngine implements TemplateEngineInterface {
+class MustacheEngine implements EngineInterface {
 
 	/**
 	 * @var \Mustache_Engine
 	 */
-	 protected $mustache;
+	protected $mustache;
 
 	/**
-	 * MustacheTemplateEngine constructor.
+	 * MustacheEngine constructor.
 	 *
 	 * @param \Mustache_Engine $mustache
 	 */
@@ -30,7 +28,7 @@ class MustacheTemplateEngine implements TemplateEngineInterface {
 	 * @return string
 	 */
 	public function render( $templateName, array $data = array() ) {
-		// TODO: Implement render() method.
+		return $this->mustache->render( $templateName, (object) $data );
 	}
 
 	/**
@@ -41,6 +39,6 @@ class MustacheTemplateEngine implements TemplateEngineInterface {
 	 * @return string
 	 */
 	public function getTemplateContents( $templateName ) {
-		// TODO: Implement getTemplateContents() method.
+		return $this->mustache->getLoader()->load( $templateName );
 	}
 }

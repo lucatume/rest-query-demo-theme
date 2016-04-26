@@ -1,11 +1,11 @@
 // from WordPress
-var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), Handlebars;
+var $ = require( 'jQuery' ), restData, Backbone = require( 'backbone' ), Mustache, templateContents;
 
 require( 'what-input' )
 require( 'foundation' );
 var Spinner = require( 'spin' );
 
-Handlebars = require( 'handlebars' );
+Mustache = require( 'mustache' );
 
 // we read this from the page
 restData = require( 'rest-data' );
@@ -39,8 +39,9 @@ $( document ).ready( function () {
 		}
 	}
 
-	// compile the content template
-	contentTemplate = Handlebars.compile( $( '#tpl-content' ).html() );
+	// parse the content template for performance reasons
+	templateContents = $( '#tpl-content' ).html()
+	Mustache.parse( templateContents );
 
 	// spinn up the spinner
 	var spinner = new Spinner().spin()
@@ -49,7 +50,7 @@ $( document ).ready( function () {
 	// let's route
 	var rqdRouter = Backbone.Router.extend( {
 		restEndpoint: restEndpoint,
-		template: contentTemplate,
+		template: templateContents,
 		routes: {
 			'': 'index',
 			'?s=:searchString': 'index',
@@ -59,7 +60,7 @@ $( document ).ready( function () {
 			var self = this;
 			contentArea.fadeTo( 200, .3 ).append( spinner.el );
 			this.restEndpoint.getPostsData( args ).done( function ( data ) {
-				var content = self.template( {posts: data} );
+				var content = Mustache.render( self.template, {posts: data} );
 				contentArea.html( content ).fadeTo( 100, 1 );
 				spinner.stop();
 			} );

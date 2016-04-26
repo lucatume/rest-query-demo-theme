@@ -3,6 +3,7 @@ var path = require( 'path' );
 module.exports = {
 	entry: {
 		'rqd-handlebars-bundle': './js/handlebars-app.js',
+		'rqd-mustache-bundle': './js/mustache-app.js',
 	},
 	output: {filename: './js/dist/[name].js'},
 	module: {

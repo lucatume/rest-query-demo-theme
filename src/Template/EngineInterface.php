@@ -1,7 +1,7 @@
 <?php
-namespace rqd;
+namespace rqd\Template;
 
-interface TemplateEngineInterface {
+interface EngineInterface {
 
 	/**
 	 * Returns the template rendered with the specified data.

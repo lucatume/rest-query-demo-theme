@@ -1,10 +1,10 @@
 <?php
 
-namespace rqd;
+namespace rqd\Template;
 
 use Handlebars\Handlebars;
 
-class HandlebarsTemplateEngine implements TemplateEngineInterface {
+class HandlebarsEngine implements EngineInterface {
 
 	/**
 	 * @var Handlebars

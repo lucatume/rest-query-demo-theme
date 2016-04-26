@@ -1,7 +1,9 @@
 <?php
 use rqd\TemplateEngineInterface;
 
-$templateEngineName = get_theme_mod( 'templateEngine', 'handlebars' );
+$templateEngineName       = get_theme_mod( 'templateEngine', 'handlebars' );
+$phpTemplateEngineVersion = \rqd\templateEngineInfo( $templateEngineName, 'php' );
+$jsTemplateEngineVersion  = \rqd\templateEngineInfo( $templateEngineName, 'js' );
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,8 @@ $templateEngineName = get_theme_mod( 'templateEngine', 'handlebars' );
 
 <header class='container row' id='header'>
 	<h1 class="small-12 columns text-center">The Loop</h1>
-	<p class="small-12 columns text-center">Rendering with <?php echo \rqd\templateEngineInfo( $templateEngineName ); ?></p>
+	<p class="small-12 columns text-center">Rendering initial state with <?php echo $phpTemplateEngineVersion; ?> and subsequent states
+		with <?php echo $jsTemplateEngineVersion; ?></p>
 </header>
 
 <nav class='container row' id='nav'>
@@ -56,7 +59,7 @@ $templateEngineName = get_theme_mod( 'templateEngine', 'handlebars' );
 			$templateContents = $templateEngine->getTemplateContents( 'content' );
 
 			// print the template to the page for the JS version of the template engine to use
-			echo '<script type="text/x-handlebars-template" id="tpl-content">', $templateContents, '</script>';
+			echo '<script type="text/template" id="tpl-content">', $templateContents, '</script>';
 
 			// render the content initial state with PHP
 			echo $templateEngine->render( 'content', [ 'posts' => $posts ] );
