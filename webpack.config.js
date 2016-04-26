@@ -4,11 +4,12 @@ module.exports = {
 	entry: {
 		'rqd-handlebars-bundle': './js/handlebars-app.js',
 		'rqd-mustache-bundle': './js/mustache-app.js',
+		'rqd-smarty-bundle': './js/jsmart-app.js',
 	},
 	output: {filename: './js/dist/[name].js'},
 	module: {
 		loaders: [
-			{test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
+			{test: /\.js$/, loader: 'babel-loader', exclude: /(node_modules|vendor\/jsmart.min.js)/},
 			{test: /\.css$/, loader: 'style!css'},
 			{test: /\.scss$/, loaders: ['style', 'css', 'sass']}
 		]

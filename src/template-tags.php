@@ -18,6 +18,10 @@ function templateEngineInfo( $template, $version = 'php' ) {
 			'php' => '<a href="https://github.com/bobthecow/mustache.php" target="_blank">Mustache.php</a>',
 			'js'  => '<a href="https://github.com/janl/mustache.js" target="_blank">Mustache.js</a>',
 		],
+		'smarty'   => [
+			'php' => '<a href="http://www.smarty.net" target="_blank">Smarty.php</a>',
+			'js'  => '<a href="https://github.com/umakantp/jsmart" target="_blank">jSmart.js</a>',
+		],
 	];
 
 	return ! empty( $map[ $template ][ $version ] ) ? $map[ $template ][ $version ] : $map['handlebars']['php'];

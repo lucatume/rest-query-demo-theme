@@ -7,6 +7,9 @@ use Handlebars\Loader\FilesystemLoader;
 
 class Control {
 
+	/**
+	 * @var string
+	 */
 	protected $root;
 
 	public function __construct() {
@@ -17,10 +20,12 @@ class Control {
 	}
 
 	public function templateInclude( $template ) {
+		// to allow the template to use it in its scope
 		$templateEngine = $this->templateEngine;
 
 		include $template;
-
+		
+		// prevent WordPress from loading the template again 
 		return false;
 	}
 
@@ -46,6 +51,13 @@ class Control {
 		return new MustacheEngine( $mustache );
 	}
 
+	protected function getSmartyInstance() {
+		$smarty = new \Smarty();
+		$smarty->setTemplateDir( $this->getSmartyTemplateFolder() );
+
+		return new SmartyEngine( $smarty );
+	}
+
 	/**
 	 * @param string $templateEngine
 	 *
@@ -55,6 +67,7 @@ class Control {
 		$map = [
 			'handlebars' => 'getHandlebarsInstance',
 			'mustache'   => 'getMustacheInstance',
+			'smarty'     => 'getSmartyInstance',
 		];
 
 		$templateEngine = isset( $map[ $templateEngine ] ) ? $templateEngine : 'handlebars';
@@ -64,6 +77,10 @@ class Control {
 
 	protected function getMustacheTemplateFolder() {
 		return $templatesFolder = $this->root . '/templates/mustache/';
+	}
+
+	protected function getSmartyTemplateFolder() {
+		return $templatesFolder = $this->root . '/templates/smarty/';
 	}
 }
 

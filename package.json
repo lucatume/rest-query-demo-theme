@@ -29,6 +29,7 @@
     "babel-loader": "^6.2.2",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
+    "script-loader": "^0.7.0",
     "webpack": "^1.12.13"
   }
 }

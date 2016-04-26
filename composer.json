@@ -4,7 +4,8 @@
   "type": "wordpress-theme",
   "require": {
     "xamin/handlebars.php": "^0.10.3",
-    "mustache/mustache": "^2.10"
+    "mustache/mustache": "^2.10",
+    "smarty/smarty": "^3.1"
   },
   "license": "GPL v2.0",
   "authors": [
