@@ -28,7 +28,11 @@ $jsTemplateEngineVersion  = \rqd\templateEngineInfo( $templateEngineName, 'js' )
 <nav class='container row' id='nav'>
 	<form action="/" method="GET" class="medium-8 medium-centered columns">
 		<div class="input-group">
-			<input class="input-group-field" type="text" name="s" data-placehoder="Search me: no JavaScript for you though.">
+			<input class="input-group-field"
+			       type="text" 
+			       name="s" 
+			       data-placehoder="Search me: no JavaScript for you though."
+			       placeholder="Search me: no JavaScript for you though.">
 			<div class="input-group-button">
 				<input type="submit" class="button" value="Search">
 			</div>
